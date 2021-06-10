@@ -39,7 +39,7 @@ You should now be able to browse a neo4j representation of the ontology at http:
 
 ### Exercise 2: 
 
-Using a forked copy of this repo as a base, write an API library in Python to query the database with methods to:
+Using a forked copy of this repo as a base, write an API library, preferably in Python\*, to query the database with methods to:
 
 * List all grape growing regions (in the ontology)
 * List all varietals  (in the ontology)
@@ -53,6 +53,8 @@ Your code should:
 If you prefer, you may base your API on SPARQL queries of the OWL ontology in place of Cypher queries of the Neo4J database.
 
 You should include clear documentation on how to use your API.
+
+\* While we would prefer a solution in Python, we will accept solutions in you language of choice if you are not comfortable with writing Python.
 
 ### Exercise 3:
 
