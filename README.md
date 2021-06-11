@@ -17,24 +17,29 @@ Explore the OWL file in Protege and run a reasoner.
 
 * Please explain, in a few clear sentences, why the reasoner classifies Barolo as an Italian wine.
 
+Make sure docker has access to the location where you've checked out this repo.
+
 Launch a local copy of the DB and load the ontology
 
 ```sh
-docker run -p:7474:7474 -p 7687:7687 --env-file ./src/resources/env.list matentzn/vfb-prod
+docker run -d -p:7474:7474 -p 7687:7687 --volume=`pwd`:/import/  --env-file ./src/resources/env.list matentzn/vfb-prod
 ```
-Then in a separate terminal window, run:
+
+Wait until you can browse at http://localhost:7474
+
+Then run:
 
 ```sh
-python src/load_db.py "https://raw.githubusercontent.com/EBISPOT/semantic_dev_tech_test/main/src/resources/wine.owl"
+python3 src/load_db.py file:///src/resources/wine.owl
 ```
 
-You should be able to browse at http://localhost:7474
+You should now be able to browse a neo4j representation of the ontology at http://localhost:7474
 
 * Compare the original OWL representation of the wine ontology and its representation as a Neo4j labelled property graph and document the transformation in your own words. How do the representations differ? How was the OWL representation mapped into the Neo4j representation?
 
 ### Exercise 2: 
 
-Using a forked copy of this repo as a base, write an API library in Python to query the database with methods to:
+Using a forked copy of this repo as a base, write an API library, preferably in Python\*, to query the database with methods to:
 
 * List all grape growing regions (in the ontology)
 * List all varietals  (in the ontology)
@@ -48,6 +53,8 @@ Your code should:
 If you prefer, you may base your API on SPARQL queries of the OWL ontology in place of Cypher queries of the Neo4J database.
 
 You should include clear documentation on how to use your API.
+
+\* While we would prefer a solution in Python, we will accept solutions in you language of choice if you are not comfortable with writing Python.
 
 ### Exercise 3:
 
